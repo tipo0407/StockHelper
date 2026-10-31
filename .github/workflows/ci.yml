@@ -21,5 +21,5 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           $msbuild = & "${env:ProgramFiles(x86)}/Microsoft Visual Studio/Installer/vswhere.exe" -latest -products * -requires Microsoft.Component.MSBuild -find MSBuild/**/Bin/MSBuild.exe | Select-Object -First 1
           if (-not $msbuild) { throw "MSBuild not found" }
-          & $msbuild PlayWithData.sln /t:Rebuild /p:Configuration=Release /p:Platform=AnyCPU
+          & $msbuild PlayWithData.sln /t:Rebuild /p:Configuration=Release "/p:Platform=Any CPU"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
